@@ -1,17 +1,25 @@
-name: Node.js CI
-
+name: CI
+run-name: ${{ github.actor }} está corriendo los tests unitarios y de aceptación con Github Actions 🚀
 on: [push]
-
 jobs:
-    build:
-
+  build:
     runs-on: ubuntu-latest
 
     steps:
-        - uses: actions/checkout@v4
-        - name: Use Node.js
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-            node-version: '22.x'
-        - run: npm ci
-        - run: npm test
+          node-version: '22.x'
+
+      - name: Install dependencies
+        run: | 
+          cd Calculadora
+          npm install
+
+      - name: Run unit tests
+        run: |
+          cd Calculadora
+          npm test
