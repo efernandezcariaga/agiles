@@ -22,4 +22,4 @@ jobs:
       - name: Run unit tests
         run: |
           cd Calculadora
-          npm testGA
+          npm run testGA
