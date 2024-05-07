@@ -12,8 +12,9 @@ jobs:
         steps:
             - name: Checkout code
                 uses: actions/checkout@v2
-                with:
-                    path: 'Calculadora' 
+
+            - name: Change directory to 'Calculadora'
+                run: cd Calculadora
 
             - name: Setup Node.js
                 uses: actions/setup-node@v2
