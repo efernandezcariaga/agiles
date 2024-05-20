@@ -25,7 +25,7 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
-      <input type="text" value={result} />
+      <input type="text" value={result} readOnly />
       <div>
         <button className="clear" onClick={clear}>Clear</button>
         <button onClick={backspace}>C</button>

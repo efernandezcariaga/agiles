@@ -24,19 +24,24 @@ jobs:
       - name: Run ESLint
         run: |
           cd Calculadora
-          npm run lint > eslint-results.log || true
-
-      - name: Display ESLint errors
-        if: always()   # Este paso se ejecutará siempre, incluso si los pasos anteriores fallaron
-        run: |
-          if [ -s "eslint-results.log" ]; then
-            echo "ESLint found errors:"
-            cat eslint-results.log
-          else
-            echo "No ESLint errors found."
-          fi
+          npm run lint  || true
 
       - name: Run unit tests
         run: |
           cd Calculadora
           npm run testGA
+
+      - name: Run unit tests with Coverage
+        run: |
+          cd Calculadora
+          npm run testGACoverage
+
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v4.0.1
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }}
+      #     files: ./coverage/lcov.info
+      #     flags: unittests
+      #     name: codecov-coverage
+      #     fail_ci_if_error: true
+
