@@ -24,7 +24,17 @@ jobs:
       - name: Run ESLint
         run: |
           cd Calculadora
-          npm run lint 
+          npm run lint > eslint-results.log || true
+
+      - name: Display ESLint errors
+        if: always()   # Este paso se ejecutará siempre, incluso si los pasos anteriores fallaron
+        run: |
+          if [ -s "eslint-results.log" ]; then
+            echo "ESLint found errors:"
+            cat eslint-results.log
+          else
+            echo "No ESLint errors found."
+          fi
 
       - name: Run unit tests
         run: |
