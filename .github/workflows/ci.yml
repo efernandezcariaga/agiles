@@ -1,6 +1,8 @@
 name: CI
 run-name: ${{ github.actor }} está corriendo los tests unitarios y de aceptación con Github Actions 🚀
+
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,7 +24,7 @@ jobs:
       - name: Run ESLint
         run: |
           cd Calculadora
-          npx eslint . --quiet > eslint-results.log || true
+          npm run lint > eslint-results.log || true
 
       - name: Check ESLint results
         run: |
