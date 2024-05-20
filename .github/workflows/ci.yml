@@ -19,6 +19,11 @@ jobs:
           cd Calculadora
           npm install
 
+      - name: Run ESLint
+        run: |
+          cd Calculadora
+          npm run lint 
+
       - name: Run unit tests
         run: |
           cd Calculadora
