@@ -24,17 +24,7 @@ jobs:
       - name: Run ESLint
         run: |
           cd Calculadora
-          npm run lint > eslint-results.log || true
-
-      - name: Check ESLint results
-        run: |
-          if grep -q "error" eslint-results.log; then
-            echo "ESLint found errors:"
-            cat eslint-results.log
-            exit 1
-          else
-            echo "No ESLint errors found."
-          fi
+          npm run lint 
 
       - name: Run unit tests
         run: |
